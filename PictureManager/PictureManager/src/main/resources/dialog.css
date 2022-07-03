@@ -1,0 +1,35 @@
+.root{
+    -fx-font-family: "FZYunLiuTiS";
+    -fx-font-size: 17;
+}
+
+.dialog-pane {
+    -fx-background-color: linear-gradient(to right, rgba(115, 87, 73, 0.8), rgba(79, 79, 124, 0.8));
+}
+.dialog-pane .label{
+    -fx-text-fill: #e2e0ff;
+}
+.header-panel{
+    -fx-background-color: linear-gradient(to right, rgba(98, 87, 85, 0.9), rgba(85, 85, 112, 0.9));
+}
+.graphic-container{
+    -fx-opacity: 0%;
+}
+.button{
+    -fx-text-fill: #e2e0ff;
+    -fx-background-radius: 5em;
+    -fx-background-color: linear-gradient(to right, rgba(110, 83, 70, 0.9), rgba(74, 74, 119, 0.9));
+}
+
+.button:hover{
+    -fx-background-color: linear-gradient(to right, rgba(76, 104, 107, 0.85), rgba(94, 84, 115, 0.85));
+}
+.button:pressed{
+    -fx-background-color: linear-gradient(to right, rgb(110, 83, 70), rgb(74, 74, 119));
+}
+.text-field{
+    -fx-background-color: linear-gradient(to right, rgba(110, 83, 70, 0.9), rgba(74, 74, 119, 0.9));
+    -fx-text-fill: #e2e0ff;
+    -fx-highlight-fill: #cce4f6;
+    -fx-highlight-text-fill: #700000;
+}

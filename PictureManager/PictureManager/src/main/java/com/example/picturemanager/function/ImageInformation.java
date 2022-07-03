@@ -1,0 +1,104 @@
+package com.example.picturemanager.function;
+
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileOwnerAttributeView;
+import java.nio.file.attribute.UserPrincipal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class ImageInformation {
+    private final String imagePath;
+    private final String imageName;
+    private final String sizeOfImage;
+    private final Label imageInformationLabel = new Label();
+    private final UserPrincipal owner;
+    private final int widthOfImage;
+    private final int heightOfImage;
+
+
+    /*public String getImagePath() {
+        return imagePath;
+    }*/
+
+    /*public String getImageName() {
+        return imageName;
+    }*/
+
+    public Label getImageInformationLabel() {
+        return imageInformationLabel;
+    }
+
+    public String getSizeOfImage() {
+        return sizeOfImage;
+    }
+
+
+    public ImageInformation(String imagePath, String imageName) throws IOException {
+
+
+        this.imagePath = imagePath.substring(5);
+
+        //名字
+        Image image = new Image(imagePath);
+        this.imageName = imageName;
+
+        //大小
+        File file = new File(this.imagePath);
+        this.sizeOfImage = String.format("%.2f",file.length()/1024.0);
+
+        FileInputStream fileInputStream=new FileInputStream(file);
+
+        BufferedImage sourceImg = ImageIO.read(fileInputStream);
+
+
+
+        this.widthOfImage = sourceImg.getWidth();
+        this.heightOfImage = sourceImg.getHeight();
+            fileInputStream.close();
+
+
+        //设置时间格式
+        Path testPath = Paths.get(file.getPath());
+        BasicFileAttributeView basicView = Files.getFileAttributeView(testPath, BasicFileAttributeView.class);
+        //BasicFileAttributes basicFileAttributes = basicView.readAttributes();
+        //df.format（）是将获取的时间转换成设置的格式
+        //SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+        FileOwnerAttributeView ownerView = Files.getFileAttributeView(testPath, FileOwnerAttributeView.class);
+        this.owner = ownerView.getOwner();
+
+        setInformationOfImageOnLabel();
+
+    }
+
+    private void setInformationOfImageOnLabel()
+    {
+        //imageInformationLabel.setId("imageInfo");
+
+        imageInformationLabel.setMaxHeight(1000);
+        // System.out.println(imageInformationLabel.getHeight());
+        imageInformationLabel.setPrefSize(250,1000);
+        imageInformationLabel.setText("图片名："+imageName+"\n"
+                +"位置："+imagePath+"\n"
+                +"图片大小："+sizeOfImage +"KB"+"\n"
+                +"图片宽度："+widthOfImage+"\n"
+                +"图片高度："+heightOfImage+"\n"
+                +"文件所有者："+owner);
+
+    }
+
+
+
+}

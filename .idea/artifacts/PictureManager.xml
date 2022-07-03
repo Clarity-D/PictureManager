@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PictureManager">
+    <output-path>$PROJECT_DIR$/out/artifacts/PictureManager</output-path>
+    <root id="archive" name="PictureManager.jar">
+      <element id="module-source" name="PictureManager" />
+      <element id="module-output" name="PictureManager" />
+    </root>
+  </artifact>
+</component>
