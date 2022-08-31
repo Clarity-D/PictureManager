@@ -826,6 +826,7 @@ public class HelloController implements Initializable//实现接口Initializable
         else {
             app.close();
         }
+        System.out.println("test");
     }
 
     public void onSmal(ActionEvent actionEvent) {
