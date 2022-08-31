@@ -27,6 +27,7 @@ public class HelloApplication extends Application
         super.init();
         //Font font = Font.loadFont(getClass().getResourceAsStream("PERFORM GENERIC Regular.ttf"),12);
         //System.out.println(font.getFamily());
+        System.out.println("initialized");
     }
     @Override
     public void start(Stage stage) throws IOException
